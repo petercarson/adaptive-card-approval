@@ -1,0 +1,232 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+        {
+            "type": "Container",
+            "id": "45ac620d-7530-1371-a07f-44d9028fc4b9",
+            "padding": "Medium",
+            "items": [
+                {
+                    "type": "Container",
+                    "id": "3d4e5f64-345f-9eb0-bcc5-84d7469aada8",
+                    "padding": "None",
+                    "items": [
+                        {
+                            "type": "ColumnSet",
+                            "id": "25cd6d1d-2ee5-ff2f-bab5-c8246fcf8776",
+                            "columns": [
+                                {
+                                    "type": "Column",
+                                    "id": "e7c9fb7d-073a-99b6-ffed-37449dd3e7b1",
+                                    "padding": "None",
+                                    "width": "auto",
+                                    "items": [
+                                        {
+                                            "type": "Image",
+                                            "id": "8285e36e-c3f0-0aa8-5d62-5c12afc40e13",
+                                            "url": "https://www.envisionit.com/img/logo-eit.png",
+                                            "size": "Medium"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Column",
+                                    "id": "3606c3a5-ec44-4dce-6780-df638979116d",
+                                    "padding": "None",
+                                    "width": 50,
+                                    "verticalContentAlignment": "Center",
+                                    "items": [
+                                        {
+                                            "type": "TextBlock",
+                                            "id": "2bbaef48-6ffc-4db3-3a93-37ada7d1b31b",
+                                            "text": "Pending Approval",
+                                            "wrap": true,
+                                            "size": "Medium",
+                                            "weight": "Bolder"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "padding": "None"
+                        }
+                    ]
+                }
+            ],
+            "spacing": "Medium",
+            "style": "emphasis"
+        },
+        {
+            "type": "Container",
+            "id": "2e5d8721-846c-6f4e-c87a-7927fdba6289",
+            "padding": {
+                "top": "Large",
+                "bottom": "Small",
+                "left": "Medium",
+                "right": "Medium"
+            },
+            "items": [
+                {
+                    "type": "FactSet",
+                    "id": "7176bca4-16e6-ba15-9eab-f8613234db63",
+                    "facts": [
+                        {
+                            "title": "Requested By:",
+                            "value": "John Doe"
+                        }
+                    ]
+                },
+                {
+                    "type": "TextBlock",
+                    "id": "95293939-50be-517b-5e90-d4a15bf04e0e",
+                    "text": "[john@email.com](john@email.com)",
+                    "wrap": true,
+                    "spacing": "None",
+                    "weight": "Lighter"
+                }
+            ],
+            "spacing": "None"
+        },
+        {
+            "type": "Container",
+            "id": "5d7791b6-fb12-f898-d027-7feccad73229",
+            "padding": {
+                "top": "Small",
+                "bottom": "Small",
+                "left": "Medium",
+                "right": "Medium"
+            },
+            "items": [
+                {
+                    "type": "FactSet",
+                    "id": "97aab865-08b6-7136-3feb-cc32a24444c2",
+                    "facts": [
+                        {
+                            "title": "Date:",
+                            "value": "2019-11-27"
+                        },
+                        {
+                            "title": "Details",
+                            "value": "John Doe has requested access to SampleSite"
+                        },
+                        {
+                            "title": "Link",
+                            "value": "[eum.co](eum.co)"
+                        }
+                    ]
+                }
+            ],
+            "spacing": "None"
+        },
+        {
+            "type": "Container",
+            "id": "1af08f0a-9d82-e166-efd6-f92947eec3c6",
+            "padding": "Medium",
+            "items": [
+                {
+                    "type": "Container",
+                    "id": "06166fb7-7843-e133-e032-28ea016781db",
+                    "padding": "None",
+                    "items": [
+                        {
+                            "type": "ActionSet",
+                            "id": "03fa8a40-d7e6-ee16-2adc-1a3f7789e79c",
+                            "actions": [
+                                {
+                                    "type": "Action.ShowCard",
+                                    "id": "approve",
+                                    "title": "Approve",
+                                    "card": {
+                                        "type": "AdaptiveCard",
+                                        "padding": "None",
+                                        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                                        "fallbackText": "responseTxt",
+                                        "body": [
+                                            {
+                                                "type": "Input.Text",
+                                                "id": "approveText",
+                                                "placeholder": "Reason (optional)",
+                                                "isMultiline": true
+                                            },
+                                            {
+                                                "type": "ActionSet",
+                                                "id": "735ec4e9-92a3-d018-f2fe-930f74efe7e7",
+                                                "actions": [
+                                                    {
+                                                        "type": "Action.Http",
+                                                        "id": "97f36504-377a-14dc-caac-45fb2f87f801",
+                                                        "title": "Submit",
+                                                        "url": "https://prod-26.centralus.logic.azure.com:443/workflows/1356fde45aa14c79aa5695898c04b37d/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=rB6eeGGJcHs_GoeEHL-lxfll1BvXBZ65Ykm_LsLKjzQ",
+                                                        "method": "POST",
+                                                        "body": "{\"response\":\"{{approveText.value}}\",\"status\":\"Approved\"}",
+                                                        "headers": [
+                                                            {
+                                                                "name": "Authorization"
+                                                            },
+                                                            {
+                                                                "name": "Content-type",
+                                                                "value": "application/json"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "Action.ShowCard",
+                                    "title": "Reject",
+                                    "card": {
+                                        "type": "AdaptiveCard",
+                                        "padding": "None",
+                                        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                                        "fallbackText": "responseTxt",
+                                        "body": [
+                                            {
+                                                "type": "Input.Text",
+                                                "id": "rejectText",
+                                                "placeholder": "Reason (optional)",
+                                                "isMultiline": true
+                                            },
+                                            {
+                                                "type": "ActionSet",
+                                                "id": "c5d0019f-2cf4-9368-cfd5-eb743f246d0f",
+                                                "actions": [
+                                                    {
+                                                        "type": "Action.Http",
+                                                        "id": "597c51f0-1b6c-b094-a941-acc952377e54",
+                                                        "title": "Submit",
+                                                        "url": "https://prod-26.centralus.logic.azure.com:443/workflows/1356fde45aa14c79aa5695898c04b37d/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=rB6eeGGJcHs_GoeEHL-lxfll1BvXBZ65Ykm_LsLKjzQ",
+                                                        "method": "POST",
+                                                        "body": "{\"response\":\"{{rejectText.value}}\",\"status\":\"Rejected\"}",
+                                                        "headers": [
+                                                            {
+                                                                "name": "Authorization"
+                                                            },
+                                                            {
+                                                                "name": "Content-type",
+                                                                "value": "application/json"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "id": "reject"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "spacing": "None",
+            "style": "emphasis"
+        }
+    ],
+    "padding": "None",
+    "@type": "AdaptiveCard",
+    "@context": "http://schema.org/extensions"
+}
